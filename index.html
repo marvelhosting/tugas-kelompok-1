@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Mading Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef4ff;
+            color: #172033;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 16px 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .navbar {
+            max-width: 1150px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 7px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 9px 13px;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .menu-button {
+            display: none;
+            border: none;
+            background: white;
+            color: #2563eb;
+            font-size: 22px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .menu-button:hover {
+            background: #eef4ff;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            max-width: 1150px;
+            margin: auto;
+            padding: 80px 6%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .label {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 70px);
+            line-height: 1.1;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            color: #53627a;
+            font-size: 18px;
+            max-width: 650px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* ================= ILUSTRASI ================= */
+        .digital-art {
+            background: white;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(49,80,122,0.2);
+            transform: rotate(2deg);
+        }
+
+        .screen {
+            background: #101827;
+            border-radius: 18px;
+            padding: 25px;
+            color: white;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+            margin-bottom: 25px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #94a3b8;
+        }
+
+        .screen h2 {
+            color: white;
+        }
+
+        .line {
+            height: 10px;
+            background: #334155;
+            border-radius: 10px;
+            margin: 12px 0;
+        }
+
+        .line:nth-child(2) { width: 70%; }
+        .line:nth-child(3) { width: 90%; }
+        .line:nth-child(4) { width: 55%; }
+
+        /* ================= SECTION ================= */
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 65px 6%;
+        }
+
+        h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            max-width: 700px;
+            color: #607089;
+            margin-bottom: 30px;
+        }
+
+        /* ================= CARD ================= */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #dce5f3;
+            box-shadow: 0 8px 25px rgba(49,80,122,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(49,80,122,0.16);
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #637089;
+        }
+
+        /* ================= KEWARGAAN ================= */
+        .digital-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            border-left: 5px solid #2563eb;
+            box-shadow: 0 8px 25px rgba(49,80,122,0.1);
+            transition: 0.3s;
+        }
+
+        .info:hover {
+            transform: translateY(-4px);
+        }
+
+        .info ul {
+            margin-top: 12px;
+            padding-left: 22px;
+            color: #596981;
+        }
+
+        /* ================= TIPS ================= */
+        .tip {
+            margin-top: 25px;
+            padding: 30px;
+            background: linear-gradient(135deg, #ede9fe, #dbeafe);
+            border-radius: 22px;
+        }
+
+        .tip strong {
+            color: #5b21b6;
+        }
+
+        /* ================= KUIS ================= */
+        .quiz {
+            background: #111827;
+            color: white;
+            padding: 30px;
+            border-radius: 24px;
+        }
+
+        .quiz h2 {
+            color: white;
+        }
+
+        .quiz-question {
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .quiz button {
+            width: 100%;
+            display: block;
+            text-align: left;
+            background: #243044;
+            color: white;
+            border: 2px solid #41516a;
+            padding: 14px;
+            border-radius: 12px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.25s;
+        }
+
+        .quiz button:hover {
+            background: #334155;
+            transform: translateX(4px);
+        }
+
+        .quiz button:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+        }
+
+        .quiz button.correct {
+            background: #166534 !important;
+            border-color: #22c55e !important;
+        }
+
+        .quiz button.wrong {
+            background: #991b1b !important;
+            border-color: #ef4444 !important;
+        }
+
+        #hasil {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .benar {
+            background: #166534;
+        }
+
+        .salah {
+            background: #991b1b;
+        }
+
+        .reset-button {
+            display: none;
+            margin-top: 15px;
+            background: #7c3aed !important;
+            color: white !important;
+            border: none !important;
+            padding: 12px 20px !important;
+            border-radius: 10px !important;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center !important;
+        }
+
+        .reset-button:hover {
+            background: #6d28d9 !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* ================= QUOTE ================= */
+        .quote {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            max-width: 850px;
+            margin: auto;
+            color: #27364e;
+        }
+
+        /* ================= BACK TO TOP ================= */
+        #topButton {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        #topButton:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: #111827;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 35px 6%;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 800px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                margin-top: 15px;
+                background: rgba(0,0,0,0.1);
+                border-radius: 12px;
+                padding: 10px;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            nav a {
+                text-align: center;
+                padding: 12px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 50px;
+                text-align: center;
+            }
+            
+            .hero p {
+                margin: 0 auto;
+            }
+
+            .digital-art {
+                margin-top: 20px;
+            }
+
+            .cards,
+            .digital-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding-top: 45px;
+                padding-bottom: 45px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="navbar">
+        <div class="logo">
+            📱 E-MADING KLP 1 KELAS XI-5
+        </div>
+
+        <button class="menu-button" onclick="toggleMenu()" aria-label="Toggle Menu">
+            ☰
+        </button>
+
+        <nav id="menu">
+            <a href="#beranda" onclick="tutupMenu()">Beranda</a>
+            <a href="#digital" onclick="tutupMenu()">Dunia Digital</a>
+            <a href="#kewargaan" onclick="tutupMenu()">Kewargaan</a>
+            <a href="#tips" onclick="tutupMenu()">Tips</a>
+            <a href="#kuis" onclick="tutupMenu()">Kuis</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<main>
+<section class="hero" id="beranda">
+    <div>
+        <span class="label">
+            EDUKASI DIGITAL • E-MADING 
+        </span>
+        <h1>Mengenal Dunia Digital & Kewargaan Digital</h1>
+        <p>
+            Ruang belajar interaktif untuk memahami teknologi,
+            berkomunikasi dengan bijak, menjaga keamanan data,
+            dan menjadi warga digital yang bertanggung jawab.
+        </p>
+        <a href="#digital" class="button" onclick="tutupMenu()">
+            Mulai Membaca →
+        </a>
+    </div>
+
+    <div class="digital-art">
+        <div class="screen">
+            <div class="dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <h2>Hello, Digital World!</h2>
+            <p>Learn • Connect • Create • Protect</p>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= DUNIA DIGITAL ================= -->
+<section id="digital">
+    <h2>🌐 Apa Itu Dunia Digital?</h2>
+    <p class="intro">
+        Dunia digital adalah lingkungan yang menggunakan teknologi
+        digital untuk mencari informasi, belajar, berkomunikasi,
+        bekerja, berkarya, dan berbagi.
+    </p>
+
+    <div class="cards">
+        <article class="card">
+            <div class="icon">🔎</div>
+            <h3>Akses Informasi</h3>
+            <p>Internet membantu kita menemukan pengetahuan dengan cepat. Tetap periksa sumber dan jangan mudah percaya pada informasi yang belum terbukti.</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">💬</div>
+            <h3>Komunikasi</h3>
+            <p>Chat, email, forum, dan media sosial membuat kita dapat terhubung. Gunakan bahasa yang sopan dan pikirkan dampaknya sebelum mengirim.</p>
+        </article>
+
+        <article class="card">
+            <div class="icon">🎨</div>
+            <h3>Berkarya</h3>
+            <p>Teknologi memberi ruang untuk membuat desain, video, tulisan, aplikasi, dan karya kreatif lainnya secara positif.</p>
+        </article>
+    </div>
+</section>
+
+<!-- ================= KEWARGAAN DIGITAL ================= -->
+<section id="kewargaan">
+    <h2>🧑‍💻 Mengenal Kewargaan Digital</h2>
+    <p class="intro">
+        Kewargaan digital adalah kemampuan menggunakan teknologi
+        secara aman, etis, bertanggung jawab, dan menghargai orang lain.
+    </p>
+
+    <div class="digital-grid">
+        <div class="info">
+            <h3>🔐 Keamanan Digital</h3>
+            <ul>
+                <li>Gunakan kata sandi yang kuat dan unik.</li>
+                <li>Jangan sembarang membagikan data pribadi.</li>
+                <li>Waspadai tautan dan pesan mencurigakan.</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>🤝 Etika Digital</h3>
+            <ul>
+                <li>Hormati pendapat dan privasi orang lain.</li>
+                <li>Hindari perundungan dan ujaran kebencian.</li>
+                <li>Berkomunikasilah dengan sopan.</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>📰 Literasi Digital</h3>
+            <ul>
+                <li>Bandingkan informasi dari beberapa sumber.</li>
+                <li>Periksa tanggal, penulis, dan sumber berita.</li>
+                <li>Jangan ikut menyebarkan hoaks.</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <h3>©️ Hak & Tanggung Jawab</h3>
+            <ul>
+                <li>Hargai karya dan hak cipta orang lain.</li>
+                <li>Gunakan konten sesuai izin.</li>
+                <li>Bertanggung jawab atas jejak digital.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tip">
+        <strong>💡 Ingat:</strong>
+        sebelum posting, gunakan prinsip <b>STOP</b>:
+        <br><br>
+        <b>S</b> — Saring informasi<br>
+        <b>T</b> — Tinjau sumber<br>
+        <b>O</b> — Olah kata-kata<br>
+        <b>P</b> — Pikirkan dampaknya
+    </div>
+</section>
+
+<!-- ================= TIPS ================= -->
+<section id="tips">
+    <h2>🛡️ 7 Kebiasaan Warga Digital Cerdas</h2>
+    <div class="cards">
+        <article class="card">
+            <h3>1. Pikir sebelum klik</h3>
+            <p>Pastikan tautan, akun, dan informasi yang kamu buka dapat dipercaya.</p>
+        </article>
+
+        <article class="card">
+            <h3>2. Jaga privasi</h3>
+            <p>Batasi informasi pribadi yang kamu bagikan di ruang publik.</p>
+        </article>
+
+        <article class="card">
+            <h3>3. Cek fakta</h3>
+            <p>Bandingkan informasi sebelum mempercayai atau membagikannya.</p>
+        </article>
+
+        <article class="card">
+            <h3>4. Bersikap sopan</h3>
+            <p>Ingat bahwa di balik layar ada manusia yang harus dihargai.</p>
+        </article>
+
+        <article class="card">
+            <h3>5. Hargai karya</h3>
+            <p>Cantumkan sumber dan hormati hak cipta.</p>
+        </article>
+
+        <article class="card">
+            <h3>6. Jaga jejak digital</h3>
+            <p>Unggahan dapat meninggalkan jejak. Pilih konten dengan bijak.</p>
+        </article>
+    </div>
+
+    <div class="tip">
+        <strong>🌟 Pesan Mading:</strong>
+        Jadilah pengguna teknologi yang bukan hanya pintar menggunakan perangkat, tetapi juga bijak mengambil keputusan.
+    </div>
+</section>
+
+<!-- ================= KUIS ================= -->
+<section id="kuis">
+    <div class="quiz">
+        <h2>🎯 Kuis Mini</h2>
+        <p class="quiz-question">
+            Mana tindakan yang paling tepat ketika menerima berita yang mengejutkan di media sosial?
+        </p>
+
+        <button onclick="jawab(this, false, 'salah')">
+            A. Langsung membagikannya agar teman-teman tahu.
+        </button>
+
+        <button onclick="jawab(this, true, 'benar')">
+            B. Memeriksa sumber dan membandingkannya dengan sumber tepercaya.
+        </button>
+
+        <button onclick="jawab(this, false, 'salah')">
+            C. Mengubah judulnya agar lebih menarik sebelum dibagikan.
+        </button>
+
+        <div id="hasil"></div>
+
+        <button class="reset-button" id="resetButton" onclick="resetKuis()">
+            🔄 Ulangi Kuis
+        </button>
+    </div>
+</section>
+
+<!-- ================= QUOTE ================= -->
+<section>
+    <p class="quote">
+        “Teknologi adalah alat. Kitalah yang menentukan apakah
+        alat itu digunakan untuk belajar, berkarya, dan memberi manfaat.”
+    </p>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <strong>E-MADING DIGITAL</strong><br>
+    Mengenal Dunia Digital & Kewargaan Digital<br>
+    <small>Media edukasi sekolah • Belajar cerdas, aman, dan bertanggung jawab di ruang digital.</small>
+</footer>
+
+<!-- ================= BACK TO TOP ================= -->
+<button id="topButton" onclick="keAtas()" aria-label="Kembali ke atas">
+    ↑
+</button>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+    /* ================= MENU MOBILE ================= */
+    function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+    }
+
+    function tutupMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.remove("show");
+    }
+
+    /* ================= KUIS ================= */
+    function jawab(button, isCorrect, status) {
+        const semuaButton = document.querySelectorAll(".quiz button:not(.reset-button)");
+        const hasil = document.getElementById("hasil");
+        const reset = document.getElementById("resetButton");
+
+        /* Mencegah klik berkali-kali */
+        semuaButton.forEach(function(btn) {
+            btn.disabled = true;
+        });
+
+        if (status === "benar") {
+            button.classList.add("correct");
+            hasil.style.display = "block";
+            hasil.className = "benar";
+            hasil.innerHTML = "✅ Tepat sekali! Warga digital yang cerdas selalu memverifikasi fakta sebelum membagikannya.";
+        } else {
+            button.classList.add("wrong");
+            hasil.style.display = "block";
+            hasil.className = "salah";
+            hasil.innerHTML = "❌ Kurang tepat. Ingat prinsip STOP: selalu periksa kebenaran informasi sebelum dibagikan agar tidak menyebar hoaks.";
+            
+            // Tunjukkan jawaban yang benar
+            semuaButton.forEach(function(btn) {
+                if (btn.textContent.includes("B.")) {
+                    btn.classList.add("correct");
+                }
+            });
+        }
+        reset.style.display = "block";
+    }
+
+    function resetKuis() {
+        const semuaButton = document.querySelectorAll(".quiz button:not(.reset-button)");
+        const hasil = document.getElementById("hasil");
+        const reset = document.getElementById("resetButton");
+
+        semuaButton.forEach(function(btn) {
+            btn.disabled = false;
+            btn.classList.remove("correct");
+            btn.classList.remove("wrong");
+        });
+
+        hasil.style.display = "none";
+        reset.style.display = "none";
+    }
+
+    /* ================= BACK TO TOP ================= */
+    window.onscroll = function() {
+        const topButton = document.getElementById("topButton");
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            topButton.style.display = "block";
+        } else {
+            topButton.style.display = "none";
+        }
+    };
+
+    function keAtas() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+</script>
+
+</body>
+</html>
